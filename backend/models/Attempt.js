@@ -1,13 +1,10 @@
-const mongoose = require('mongoose');
+ const mongoose = require('mongoose');
 
-/**
- * Attempt schema — logs each query a student submits.
- * Useful for tracking progress and analytics.
- */
+/*  Attempt schema — logs each query a student submits.*/
 const attemptSchema = new mongoose.Schema({
     userId: {
         type: String,
-        default: 'anonymous', // No auth implemented yet
+        default: 'anonymous', 
     },
     assignmentId: {
         type: mongoose.Schema.Types.ObjectId,
