@@ -47,7 +47,7 @@ INSERT INTO employees (first_name, last_name, email, department_id, salary, hire
 ('Karen', 'Thomas', 'karen.thomas@company.com', 5, 70000.00, '2023-04-10', 'Financial Analyst'),
 ('Leo', 'Jackson', 'leo.jackson@company.com', 6, 75000.00, '2023-05-15', 'Operations Manager');
 
--- ─── Customers ────────────────────────────────────────
+-- Customers --
 CREATE TABLE IF NOT EXISTS customers (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -58,14 +58,13 @@ CREATE TABLE IF NOT EXISTS customers (
 );
 
 INSERT INTO customers (name, email, city, country, registration_date) VALUES
-('Acme Corp', 'contact@acme.com', 'Los Angeles', 'USA', '2022-01-15'),
-('Globex Inc', 'info@globex.com', 'London', 'UK', '2021-06-20'),
-('Initech', 'hello@initech.com', 'Toronto', 'Canada', '2023-03-10'),
-('Umbrella Ltd', 'sales@umbrella.com', 'Berlin', 'Germany', '2022-08-05'),
-('Stark Industries', 'orders@stark.com', 'New York', 'USA', '2020-12-01'),
-('Wayne Enterprises', 'info@wayne.com', 'Chicago', 'USA', '2021-04-18'),
-('Cyberdyne Systems', 'support@cyberdyne.com', 'Tokyo', 'Japan', '2023-07-22'),
-('Soylent Corp', 'hello@soylent.com', 'Sydney', 'Australia', '2022-11-30');
+('Acme Corp', 'hello@acme.com', 'New York', 'USA', '2022-01-15'),
+('Globex Inc', 'info@globex.com', 'Los Angeles', 'USA', '2022-02-20'),
+('Initech', 'contact@initech.com', 'Austin', 'USA', '2022-03-10'),
+('Umbrella Ltd', 'info@umbrella.com', 'London', 'UK', '2022-04-15'),
+('Stark Industries', 'info@starkindustries.com', 'New York', 'USA', '2022-05-20'),
+ 
+
 
 -- ─── Orders ───────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS orders (
