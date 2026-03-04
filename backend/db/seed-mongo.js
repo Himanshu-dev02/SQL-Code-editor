@@ -1,44 +1,89 @@
+ /* MongoDB Seed Script — assignments collection with  SQL exercises.*/
+require('dotenv').config();
+const mongoose = require('mongoose');
 const Assignment = require('../models/Assignment');
 
-/* All assignment listin page data */
-const getAll = async (req, res) => {
+const assignments = [
+    {
+        title: 'Employee Directory',    
+        description:
+            'Practice basic SELECT queries by retrieving employee information from the employees table.',
+        difficulty: 'Easy',
+        question:
+            'Write a query to retrieve the first name, last name, and job title of all employees.',
+        expectedTables: ['employees'],
+    },
+    {
+        title: 'Department Budget Analysis',
+        description:
+            'Use filtering and sorting to analyze department budgets.',
+        difficulty: 'Easy',
+        question:
+            'Write a query to find all departments with a budget greater than $700,000, sorted by budget in descending order.',
+        expectedTables: ['departments'],
+    },
+    {
+        title: 'Employee-Department Join',
+        description:
+            'Practice JOIN operations by combining employee and department data.',
+        difficulty: 'Medium',
+        question:
+            'Write a query to display each employee\'s full name along with their department name. Include all employees.',
+        expectedTables: ['employees', 'departments'],
+    },
+    {
+        title: 'Order Summary by Customer',
+        description:
+            'Use aggregation functions to summarize order data per customer.',
+        difficulty: 'Medium',
+        question:
+            'Write a query to show each customer\'s name and the total amount they have spent (quantity × price) across all their orders.',
+        expectedTables: ['customers', 'orders'],
+    },
+    {
+        title: 'High-Value Orders',
+        description:
+            'Combine filtering, joins, and calculations to identify high-value transactions.',
+        difficulty: 'Medium',
+        question:
+            'Write a query to find all completed orders where the total value (quantity × price) exceeds $3,000. Show the customer name, product, and total value.',
+        expectedTables: ['customers', 'orders'],
+    },
+    {
+        title: 'Salary Analysis by Department',
+        description:
+            'Use GROUP BY, aggregate functions, and HAVING to perform advanced salary analysis.',
+        difficulty: 'Hard',
+        question:
+            'Write a query to show each department\'s name, the number of employees, the average salary, and the highest salary. Only include departments with more than 2 employees.',
+        expectedTables: ['employees', 'departments'],
+    },
+    {
+        title: 'Customer Order Frequency',
+        description:
+            'Combine multiple joins and subqueries to analyze customer ordering patterns.',
+        difficulty: 'Hard',
+        question:
+            'Write a query to find customers who have placed more than 2 orders. Display their name, total number of orders, and their most recent order date.',
+        expectedTables: ['customers', 'orders'],
+    },
+];
+
+const seedDB = async () => {
     try {
-        const assignments = await Assignment.find()
-            .select('title description difficulty')
-            .sort({ difficulty: 1 });
+        await mongoose.connect(process.env.MONGO_URI);
+        console.log('✅ MongoDB connected for seeding');
 
-            res.json({ success: true, data: assignments });
+        // Clear existing assignments
+        await Assignment.deleteMany({});
+        console.log('🗑️  Cleared existing assignments');
+
+        // Insert new assignments
+        await Assignment.insertMany(assignments);
+        console.log('✅ Seeded assignments');
     } catch (err) {
-        res.status(500).json({ success: false, error: err.message });
+        console.error('❌ Seeding error:', err.message);
     }
-};
-
-/* Single assignment details for editor page */
-const getById = async (req, res) => {
-    try {
-        const assignment = await Assignment.findById(req.params.id);
-
-        if (!assignment) {
-            return res.status(404).json({
-                success: false,
-                error: 'Assignment not found.',
-            });
-        }
-
-        res.json({ success: true, data: assignment });
-    } catch (err) {
-        // Handle invalid ObjectId format
-        if (err.kind === 'ObjectId') {
-            return res.status(400).json({
-                success: false,
-                error: 'Invalid assignment ID format.',
-            });
-        }
-        res.status(500).json({ success: false, error: err.message });
-    }
-};
-
-module.exports = { getAll, getById };
 };
 
 seedDB();
