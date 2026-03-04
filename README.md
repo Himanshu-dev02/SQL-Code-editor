@@ -219,7 +219,7 @@ Open:
 ---
 ## 📸 Screenshots
 
-| Dashboard View | Query Execution |
+| Query Problem | Query Execution |
 | :---: | :---: |
 | ![Dashboard](./frontend/src/assets/Screenshot%202026-03-04%20150826.png) | ![Query Execution](./frontend/src/assets/Screenshot%202026-03-04%20150852.png) |
 
