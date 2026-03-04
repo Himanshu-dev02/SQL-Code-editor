@@ -1,10 +1,4 @@
--- ============================================================
 -- CipherSQLStudio — PostgreSQL Sandbox Schema & Sample Data
--- ============================================================
--- Run this file against your PostgreSQL database to set up
--- the sandbox tables that students will query.
--- ============================================================
-
 --Departments --
 CREATE TABLE IF NOT EXISTS departments (
     id SERIAL PRIMARY KEY,
@@ -64,9 +58,7 @@ INSERT INTO customers (name, email, city, country, registration_date) VALUES
 ('Umbrella Ltd', 'info@umbrella.com', 'London', 'UK', '2022-04-15'),
 ('Stark Industries', 'info@starkindustries.com', 'New York', 'USA', '2022-05-20'),
  
-
-
--- ─── Orders ───────────────────────────────────────────
+-- Orders --
 CREATE TABLE IF NOT EXISTS orders (
     id SERIAL PRIMARY KEY,
     customer_id INTEGER REFERENCES customers(id),
@@ -78,18 +70,13 @@ CREATE TABLE IF NOT EXISTS orders (
 );
 
 INSERT INTO orders (customer_id, product, quantity, price, order_date, status) VALUES
-(1, 'Enterprise License', 5, 1200.00, '2023-01-20', 'completed'),
-(1, 'Support Package', 1, 500.00, '2023-02-15', 'completed'),
-(2, 'Basic License', 10, 300.00, '2023-03-01', 'completed'),
-(3, 'Enterprise License', 2, 1200.00, '2023-03-15', 'pending'),
-(4, 'Premium License', 3, 800.00, '2023-04-10', 'completed'),
-(5, 'Enterprise License', 8, 1200.00, '2023-04-25', 'completed'),
-(5, 'Training Package', 2, 1500.00, '2023-05-05', 'shipped'),
-(6, 'Basic License', 15, 300.00, '2023-05-20', 'completed'),
-(7, 'Premium License', 1, 800.00, '2023-06-10', 'pending'),
-(2, 'Support Package', 3, 500.00, '2023-06-25', 'shipped'),
-(8, 'Basic License', 5, 300.00, '2023-07-15', 'completed'),
-(3, 'Training Package', 1, 1500.00, '2023-08-01', 'pending'),
-(1, 'Premium License', 4, 800.00, '2023-08-20', 'completed'),
-(6, 'Enterprise License', 6, 1200.00, '2023-09-10', 'shipped'),
-(4, 'Support Package', 2, 500.00, '2023-09-28', 'completed');
+(1, 'Enterprise License', 5, 1200.00, '2022-01-20', 'completed'),
+(1, 'Support Package', 1, 500.00, '2022-02-15', 'completed'),
+(2, 'Basic License', 10, 300.00, '2022-03-01', 'completed'),
+(3, 'Enterprise License', 2, 1200.00, '2022-03-15', 'pending'),
+(4, 'Premium License', 3, 800.00, '2022-04-10', 'completed'),
+(5, 'Enterprise License', 8, 1200.00, '2022-04-25', 'completed'),
+(5, 'Training Package', 2, 1500.00, '2022-05-05', 'shipped'),
+(6, 'Basic License', 15, 300.00, '2022-05-20', 'completed'),
+(7, 'Premium License', 1, 800.00, '2022-06-10', 'pending'),
+(2, 'Support Package', 3, 500.00, '2022-06-25', 'shipped')
