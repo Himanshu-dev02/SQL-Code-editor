@@ -7,7 +7,7 @@ const Navbar = () => {
             <div className="navbar__inner container">
                 <Link to="/" className="navbar__brand">
                     <span className="navbar__logo">⟨/⟩</span>
-                    <span className="navbar__title">CipherSQLStudio</span>
+                    <span className="navbar__title">SQLStudio</span>
                 </Link>
                 <div className="navbar__tagline">Interactive SQL Learning</div>
             </div>
